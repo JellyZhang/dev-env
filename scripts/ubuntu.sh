@@ -52,7 +52,6 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 export GO111MODULE=on
 mkdir $home/go
 export GOPATH=$home/go
-export GOROOT=/snap/bin/go
 export GOPROXY=https://goproxy.cn,direct
 /snap/bin/nvim --headless +GoInstallBinaries +qall
 
