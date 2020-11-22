@@ -1,6 +1,6 @@
 #!/bin/bash
-
-read -p "Enter user home path:" home
+echo "Enter user home path:"
+read home
 sudo apt -y install \
     curl \
     git \
