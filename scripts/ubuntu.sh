@@ -15,10 +15,7 @@ sudo apt -y install \
     python3-pip \
     tmux
 
-sudo snap install --classic \
-    go \
-    nvim \
-    ccls
+sudo snap install go nvim ccls --classic
 
 
 # zsh
