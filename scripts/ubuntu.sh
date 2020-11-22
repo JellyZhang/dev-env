@@ -1,6 +1,9 @@
 #!/bin/bash
 echo "Enter user home path:"
 read home
+
+step=apt
+echo "------------------- $step -------------------"
 sudo apt -y install \
     curl \
     git \
@@ -21,6 +24,8 @@ sudo snap install ccls --classic
 
 
 # zsh
+step=zsh
+echo "------------------- $step -------------------"
 rm -rf $home/.oh-my-zsh >> /dev/null
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm $home/.zshrc >> /dev/null
@@ -37,9 +42,13 @@ cp ./.p10k.zsh $home/.p10k.zsh
 zsh $home/.zshrc
 
 # ranger
+step=ranger
+echo "------------------- $step -------------------"
 cp -r ./ranger $home/.config/ranger
 
 # nvim
+step=nvim
+echo "------------------- $step -------------------"
 rm -rf $home/.config >> /dev/null
 mkdir -p $home/.config/nvim
 
@@ -48,14 +57,13 @@ then
     rm $home/.config/nvim/init.vim  >> /dev/null
 fi
 
-
 sudo npm install -g neovim
 cp ./init.vim $home/.config/nvim/init.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 /snap/bin/nvim +PlugInstall +qall
+mkdir $home/go >> /dev/null
 export GO111MODULE=on
-mkdir $home/go
 export GOPATH=$home/go
 export GOPROXY=https://goproxy.cn,direct
 /snap/bin/nvim --headless +GoInstallBinaries +qall
@@ -70,6 +78,8 @@ cp ./coc-settings.json $home/.config/nvim/coc-settings.json
 
 pip3 install pynvim
 
+step=gopkg
+echo "------------------- $step -------------------"
 go get github.com/gin-gonic/gin
 go get github.com/tidwall/gjson
 go get github.com/fperf/fperf
@@ -93,11 +103,15 @@ go get github.com/spf13/cobra
 go get github.com/prometheus/client_golang
 
 # tmux
+step=tmux
+echo "------------------- $step -------------------"
 git clone https://github.com/gpakosz/.tmux.git $home/.tmux
 ln -s -f $home/.tmux/.tmux.conf
 cp ./.tmux.conf.local $home/.tmux.conf.local
 
 # docker
+step=docker
+echo "------------------- $step -------------------"
 sudo apt-get install \
     apt-transport-https \
     ca-certificates \
