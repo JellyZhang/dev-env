@@ -23,10 +23,16 @@ sudo snap install --classic \
 
 # zsh
 rm -rf $home/.oh-my-zsh >> /dev/null
-cp -r ./.oh-my-zsh $home/.oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm $home/.zshrc >> /dev/null
 cp ./.zshrc $home/.zshrc
 sed -i "1i export ZSH=$home/.oh-my-zsh"  "$home/.zshrc"
+zsh $home/.zshrc
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 rm $home/.p10k.zsh >> /dev/null
 cp ./.p10k.zsh $home/.p10k.zsh
 zsh $home/.zshrc
