@@ -23,39 +23,39 @@ sudo snap install --classic \
 sudo npm install -g neovim
 
 
-rm -rf ~/.config >> /dev/null
-mkdir -p ~/.config/nvim
+rm -rf $home/.config >> /dev/null
+mkdir -p $home/.config/nvim
 
-if [ -f ~/.config/nvim/init.vim ]
+if [ -f $home/.config/nvim/init.vim ]
 then
-    rm ~/.config/nvim/init.vim  >> /dev/null
+    rm $home/.config/nvim/init.vim  >> /dev/null
 fi
 
-cp ./init.vim ~/.config/nvim/init.vim
+cp ./init.vim $home/.config/nvim/init.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 /snap/bin/nvim +PlugInstall +qall
 go env -w GO111MODULE=on
-mkdir ~/go
+mkdir $home/go
 go env -w GOPATH=$home/go
 go env -w GOROOT=/snap/bin/go
 go env -w GOPROXY=https://goproxy.cn,direct
 /snap/bin/nvim --headless +GoInstallBinaries +qall
 
-if [ -f ~/.config/nvim/coc-settings.json ]
+if [ -f $home/.config/nvim/coc-settings.json ]
 then
-    rm ~/.config/nvim/coc-settings.json >> /dev/null
+    rm $home/.config/nvim/coc-settings.json >> /dev/null
 fi
-cp ./coc-settings.json ~/.config/nvim/coc-settings.json
+cp ./coc-settings.json $home/.config/nvim/coc-settings.json
 
-rm -rf ~/.oh-my-zsh >> /dev/null
-cp -r ./.oh-my-zsh ~/.oh-my-zsh
-rm ~/.zshrc >> /dev/null
-cp ./.zshrc ~/.zshrc
-rm ~/.p10k.zsh >> /dev/null
-cp ./.p10k.zsh ~/.p10k.zsh
-zsh ~/.zshrc
-cp -r ./ranger ~/.config/ranger
+rm -rf $home/.oh-my-zsh >> /dev/null
+cp -r ./.oh-my-zsh $home/.oh-my-zsh
+rm $home/.zshrc >> /dev/null
+cp ./.zshrc $home/.zshrc
+rm $home/.p10k.zsh >> /dev/null
+cp ./.p10k.zsh $home/.p10k.zsh
+zsh $home/.zshrc
+cp -r ./ranger $home/.config/ranger
 
 
 pip3 install pynvim
@@ -83,9 +83,9 @@ go get github.com/spf13/cobra
 go get github.com/prometheus/client_golang
 
 # tmux
-git clone https://github.com/gpakosz/.tmux.git ~/.tmux
-ln -s -f ~/.tmux/.tmux.conf
-cp ./.tmux.conf.local ~/.tmux.conf.local
+git clone https://github.com/gpakosz/.tmux.git $home/.tmux
+ln -s -f $home/.tmux/.tmux.conf
+cp ./.tmux.conf.local $home/.tmux.conf.local
 
 # docker
 sudo apt-get install \
@@ -103,5 +103,6 @@ sudo add-apt-repository \
 
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
+
 
 
