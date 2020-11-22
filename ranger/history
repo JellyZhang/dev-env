@@ -1,0 +1,42 @@
+shell
+shell vim k
+
+search 
+search tmux
+qopen_with%spaceqqqa
+open_with i
+search tt
+search pl
+search ranklistr
+search ttgame
+search pla
+search rank
+rename deploy_boei18n.conf
+shell 
+rename .gitignore
+rename identity_testIIii.go
+shell vim K
+find .h
+deletedD
+deleteq
+search wrok
+search worj
+search desk
+search wo
+search k
+search pdf
+search test
+q
+rename logo.jpg
+rename avatar.jpg
+rename index-zh-cn.md
+rename index.zh-cn.md
+search redis
+search ssh
+open_with nvim
+search .cn
+search work
+search .ha
+search down
+open_with 
+delete
