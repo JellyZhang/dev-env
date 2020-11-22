@@ -52,6 +52,7 @@ rm -rf $home/.oh-my-zsh >> /dev/null
 cp -r ./.oh-my-zsh $home/.oh-my-zsh
 rm $home/.zshrc >> /dev/null
 cp ./.zshrc $home/.zshrc
+echo `export ZSH="${home}/.oh-my-zsh"` >> $home/.zshrc
 rm $home/.p10k.zsh >> /dev/null
 cp ./.p10k.zsh $home/.p10k.zsh
 zsh $home/.zshrc
