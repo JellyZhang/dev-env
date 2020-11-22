@@ -20,9 +20,21 @@ sudo snap install --classic \
     nvim \
     ccls
 
-sudo npm install -g neovim
 
+# zsh
+rm -rf $home/.oh-my-zsh >> /dev/null
+cp -r ./.oh-my-zsh $home/.oh-my-zsh
+rm $home/.zshrc >> /dev/null
+cp ./.zshrc $home/.zshrc
+echo `export ZSH="${home}/.oh-my-zsh"` >> $home/.zshrc
+rm $home/.p10k.zsh >> /dev/null
+cp ./.p10k.zsh $home/.p10k.zsh
+zsh $home/.zshrc
 
+# ranger
+cp -r ./ranger $home/.config/ranger
+
+# nvim
 rm -rf $home/.config >> /dev/null
 mkdir -p $home/.config/nvim
 
@@ -31,6 +43,8 @@ then
     rm $home/.config/nvim/init.vim  >> /dev/null
 fi
 
+
+sudo npm install -g neovim
 cp ./init.vim $home/.config/nvim/init.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
@@ -48,15 +62,6 @@ then
 fi
 cp ./coc-settings.json $home/.config/nvim/coc-settings.json
 
-rm -rf $home/.oh-my-zsh >> /dev/null
-cp -r ./.oh-my-zsh $home/.oh-my-zsh
-rm $home/.zshrc >> /dev/null
-cp ./.zshrc $home/.zshrc
-echo `export ZSH="${home}/.oh-my-zsh"` >> $home/.zshrc
-rm $home/.p10k.zsh >> /dev/null
-cp ./.p10k.zsh $home/.p10k.zsh
-zsh $home/.zshrc
-cp -r ./ranger $home/.config/ranger
 
 
 pip3 install pynvim
