@@ -49,11 +49,11 @@ cp ./init.vim $home/.config/nvim/init.vim
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 /snap/bin/nvim +PlugInstall +qall
-go env -w GO111MODULE=on
+export GO111MODULE=on
 mkdir $home/go
-go env -w GOPATH=$home/go
-go env -w GOROOT=/snap/bin/go
-go env -w GOPROXY=https://goproxy.cn,direct
+export GOPATH=$home/go
+export GOROOT=/snap/bin/go
+export GOPROXY=https://goproxy.cn,direct
 /snap/bin/nvim --headless +GoInstallBinaries +qall
 
 if [ -f $home/.config/nvim/coc-settings.json ]
