@@ -8,4 +8,4 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
 
-
+curl -o $HOME/.vimrc https://raw.githubusercontent.com/JellyZhang/dev-env/master/.vimrc
