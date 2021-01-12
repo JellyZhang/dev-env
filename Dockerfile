@@ -109,4 +109,4 @@ COPY ./.tmux.conf.local ./.tmux.conf.local
 
 
 
-CMD tail -f /dev/null
+ENTRYPOINT ["tail","-f", "/dev/null"]

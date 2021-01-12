@@ -9,7 +9,6 @@ sudo apt -y install \
     git \
     python3 \
     wget \
-    nodejs \
     npm \
     snapd \
     zsh \
@@ -21,6 +20,14 @@ sudo apt -y install \
 sudo snap install go --classic
 sudo snap install nvim --classic
 sudo snap install ccls --classic
+
+step=nodejs
+echo "------------------- $step -------------------"
+sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificate
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt -y install nodejs
+sudo apt -y  install gcc g++ make
+
 
 
 # zsh
@@ -127,6 +134,7 @@ sudo add-apt-repository \
 
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+sudo usermod -aG docker ${USER}
 
 
 
